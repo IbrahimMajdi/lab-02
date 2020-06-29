@@ -4,23 +4,27 @@ const ajaxSettings = {
     method: 'get',
     datatype: 'json'
 }
-var selectors = [];
+
+
 
 $.ajax('./data/page-1.json', 'ajaxSettings')
     .then(data => {
-
             data.forEach(item => {
                 let newImg = new Imgs(item.image_url, item.title, item.description, item.keyword, item.horns);
-                newImg.render();
-                selectors.push(item.horns);
-
+                // newImg.render();
+                newImg.add();
+                console.log(Imgs.all);
+                
             })
-            
         }
 
     )
+// console.log('leng', selectors.length);
 
 
+Imgs.all = [];
+
+let y = [5, 7, 8]
 
 function Imgs(imgurl, title, desc, keyword, horns) {
 
@@ -29,8 +33,10 @@ function Imgs(imgurl, title, desc, keyword, horns) {
     this.desc = desc;
     this.keyword = keyword;
     this.horns = horns;
+    // Imgs.all.push(this.keyword);
 }
 
+console.log('all', Imgs.all);
 
 Imgs.prototype.render = function () {
 
@@ -45,25 +51,31 @@ Imgs.prototype.render = function () {
 
 }
 
-function select(arr) {
-    console.log(arr.length);
-    
-    for (let i = 0; i < arr.length; i++) {
-        console.log("jo");
-        
-        
-    }
-    // arr.forEach(item => {
+Imgs.prototype.add = function () {
 
-    //     console.log('arr');
-        // let opt = $('.opt').clone();
-        // opt.text(item);
-        // $('.select').append(opt);
-        // opt.removeClass('opt');
+    Imgs.all.push(this.keyword);
+}
 
 
-    // })
+
+function select(selectors) {
+
+    // console.log(selectors);
+
+    selectors.forEach(item => {
+
+        console.log('1321');
+
+        let opt = $('.opt').clone();
+        opt.text(item);
+        $('.select').append(opt);
+        opt.removeClass('opt');
+
+
+    })
 
 }
 
-select(selectors);
+console.log('pro',Imgs.all.length);
+
+select(Imgs.all);
