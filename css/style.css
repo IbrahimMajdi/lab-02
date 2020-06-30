@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Notable&family=Roboto:wght@700&display=swap');
 
+body{
+    margin-left:  13%;
+}
+
 h1 {
     font-family: 'Notable', sans-serif;
 }
@@ -22,10 +26,9 @@ section {
     float: left;
     background-color: gray;
 }
-
-/* .non{
-visibility: hidden; 
-} */
+section:first-child{
+    display: none;
+}
 
 .cont {
     display: inline;

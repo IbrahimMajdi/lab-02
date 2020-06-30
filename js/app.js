@@ -54,6 +54,7 @@ Imgs.prototype.render = function () {
 function select(selectors) {
 
     const unique = Array.from(new Set(selectors));
+    
     console.log(unique);
 
 
