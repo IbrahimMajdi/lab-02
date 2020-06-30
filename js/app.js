@@ -35,45 +35,58 @@ function Imgs(imgurl, title, desc, keyword, horns) {
 Imgs.prototype.render = function () {
 
     let photo = $('.photo-template').clone();
-    photo.attr('id', this.keyword);
+    photo.attr('class', this.keyword);
+
 
     photo.find('h2').text(this.title);
     photo.find('img').attr('src', this.imgurl);
     photo.find('img').attr('alt', this.title);
     photo.find('p').text(this.desc);
     $('.cont').append(photo);
-
+    photo.attr('value', this.keyword);
     photo.removeClass('photo-template');
 
 }
 
-// not working propably ????
-$(".select").change(function () {
 
-    let val =$(".select option:selected").text();
-    console.log('sel',val);
-    
-    // if (){}
-        // $(".select option:selected").hide();
-        // console.log(this);
-    
-    
-    
-});
 
 
 function select(selectors) {
 
     const unique = Array.from(new Set(selectors));
+    console.log(unique);
+
 
     unique.forEach(item => {
+        console.log(item);
 
         let opt = $('.opt').clone();
         opt.text(item);
-
         $('.select').append(opt);
-        var val = $('.opt').text();
         opt.removeClass('opt');
 
     })
 }
+
+// not working propably ????
+$("select").change(() => {
+
+    let value = $("select option:selected").text();
+    console.log('this', value);
+
+    Imgs.all.forEach(item => {
+        if (item !== value && value !== 'default') {
+            $('.' + item).hide();
+
+            console.log(item)
+        }
+
+        if (value === 'default' || item === value) {
+            $('.' + item).show();
+
+        }
+
+    })
+
+
+});
