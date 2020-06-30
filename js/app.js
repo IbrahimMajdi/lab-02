@@ -5,7 +5,7 @@ const ajaxSettings = {
     datatype: 'json'
 }
 
-let path1= './data/page-1.json';
+let path1 = './data/page-1.json';
 let path2 = './data/page-2.json';
 
 function ajax1(path) {
@@ -15,7 +15,7 @@ function ajax1(path) {
                 data.forEach(item => {
                     let newImg = new Imgs(item.image_url, item.title, item.description, item.keyword, item.horns);
                     newImg.render();
-                    Imgs.all.push(item);
+                    Imgs.all.push(newImg);
 
                 })
 
@@ -54,6 +54,7 @@ Imgs.prototype.render = function () {
 }
 
 
+
 function select(selectors) {
 
     let noDuplicates = [];
@@ -77,10 +78,9 @@ function select(selectors) {
 // not working propably ????
 $(".select").change(() => {
 
-    let value = $("select option:selected").text();
+    let value = $(".select option:selected").text();
 
     Imgs.all.forEach(item => {
-        console.log(item.keyword);
 
         if (item.keyword !== value && value !== 'default') {
             $('.' + item.keyword).hide();
@@ -99,8 +99,8 @@ $(".select").change(() => {
 $('#button1').click(() => {
 
     Imgs.all = [];
-
     $('#all').html('');
+
     ajax1(path1);
 
 
@@ -110,7 +110,50 @@ $('#button1').click(() => {
 $('#button2').click(() => {
 
     Imgs.all = [];
-
     $('#all').html('');
+
     ajax1(path2);
 })
+
+
+$(".sort").change(() => {
+
+    let value = $(".sort option:selected").text();
+
+    if (value == 'name') {
+
+        $('#all').html('');
+
+        Imgs.all.sort((a, b) => {
+            if (a.title < b.title) {
+                return -1
+            };
+        })
+
+        Imgs.all.forEach(item => {
+            item.render();
+            console.log(item.title, item.name);
+
+        })
+
+
+    }
+
+    if (value == 'horn') {
+        $('#all').html('');
+
+        Imgs.all.sort((a, b) => {
+            if (a.horns < b.horns) {
+                return -1
+            };
+        })
+
+        Imgs.all.forEach(item => {
+            item.render();
+            console.log(item.title, item.horns);
+
+        })
+
+    }
+
+});
