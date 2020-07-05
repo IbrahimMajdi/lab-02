@@ -1,39 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Notable&family=Roboto:wght@700&display=swap');
-
-body{
-    margin-left:  13%;
-}
-
-h1 {
-    font-family: 'Notable', sans-serif;
-}
-
-h2 {
-    font-family: 'Roboto', sans-serif;
-}
-
 img {
     height: 30%;
     width: 30%;
     border: 1px solid white;
 }
 
+div{
+    margin: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#button {
+
+text-align: center;}
+
+h2 {
+    font-family: fantasy;
+}
+
 section {
+    background-color: gray;
+    margin: 5px;
     width: 300px;
     height: 300px;
-    margin: 5px;
     text-align: center;
-    float: left;
-    background-color: gray;
-}
-section:first-child{
-    display: none;
 }
 
-.cont {
-    display: inline;
-}
-
-footer {
-    clear: both;
-}
+#all {
+    /* width: 700px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;

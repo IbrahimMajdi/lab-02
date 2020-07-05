@@ -7,32 +7,77 @@
   <title>The Gallery of Horns</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+
+
+  <script id='photo-template' type="text/x-tmpl-mustache">
+
+    <section class="{{keyword}}">
+  
+          <h2>{{title}}</h2>
+          <img src="{{imgurl}}" alt="{{title}}">
+          <p>{{desc}}</p>
+  
+    </section>
+  
+  
+  </script>
+
+  <script id='select-template' type="text/x-tmpl-mustache">
+    <option class='opt' value="{{keyword}}">{{keyword}}</option>
+    </script>
+
 </head>
+
 
 <body>
   <header>
+
     <h1>The Gallery of Horns</h1>
-    <select class='select'>
-      <option class='opt' value="default">default</option>
-    </select>
+
+    <!-- <select class='select'>
+      <option class='opt' value="default">Filter by Keyword</option>
+    </select> -->
+    <div id="button">
+      <input type="button" name="button1" id="button1" value="page1">
+      <input type="button" name="button" id="button2" value="page2">
+    </div>
+
   </header>
   <main>
 
-    <div class="cont">
+    <select class='select'>
+      <option class='opt' value='default'>default</option>
+    </select>
+
+    <select class='sort'>
+      <option class='horn' value='horn'>horn</option>
+      <option class='name' value='name'>name</option>
+    </select>
+
+
+    <div id='all'>
+
+
+
+    </div>
+
+
+
+    <!-- <div class="cont">
 
       <section class="photo-template">
-        <h2></h2>
+        <h2>{{}} </h2>
         <img src="" alt="">
         <p></p>
       </section>
 
-    </div>
-    <div id="test"></div>
+    </div> -->
 
   </main>
   <footer>
     &copy; 2018 Code Fellows
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.1/mustache.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="js/app.js"></script>
 
