@@ -57,6 +57,7 @@ Imgs.prototype.render = function () {
 
 function select(selectors) {
 
+
     let noDuplicates = [];
 
     selectors.forEach(item => {
